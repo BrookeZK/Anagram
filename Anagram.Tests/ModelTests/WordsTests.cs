@@ -57,7 +57,7 @@ namespace Anagram.Tests
       string word = "beard";
       Words newWords = new Words(word);
       char[] result = newWords.MakeArray();
-      string newResult = newWords.MakeString(result);
+      string newResult = Words.MakeString(result);
       Assert.AreEqual(word, newResult);
     }
 
@@ -90,16 +90,16 @@ namespace Anagram.Tests
     }
 
     [TestMethod]
-    public void IsAnagram_CompareCharArrayToMainWord_true();
+    public void Compare_CompareCharArrayToMainWord_true()
     {
       string word1 = "beard";
       string word2 = "bread";
       Words newWord1 = new Words(word1);
       Words newWord2 = new Words(word2);
-      List<Words> newList = new List<Words> { newWord1, newWord2 };
-
-      List<Words> result = Words.IsAnagram(newList);
-
+      char[] newNewWord1 = newWord1.MakeArray();
+      char[] newNewWord2 = newWord2.MakeArray();
+      bool result = Words.Compare(newNewWord1, newNewWord2);
+      Assert.AreEqual(result, true);
     }
   }
 }
